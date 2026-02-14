@@ -12,7 +12,7 @@ It also includes:
 - **SQLite logging** of chat runs (optional; can be disabled if DB not set)
 
 ---
-
+![alt text](image.png)
 ## Features
 
 ### ✅ Adaptive Routing
