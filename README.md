@@ -62,27 +62,76 @@ If not:
 ---
 
 ## Project Structure
-backend/
-app/
-api/ # FastAPI routes (/chat, /health)
-graph/ # LangGraph workflow + nodes
-rag/ # retriever, web_search, graders, rewriter, generator
-db/ # SQLAlchemy models + session
-config.py # Pydantic settings (env config)
-main.py # FastAPI app entrypoint
-scripts/
-build_index.py # Chunk + embed + store docs in chroma_db/
-data/ # local sqlite db (if enabled)
-chroma_db/ # persisted Chroma store (vector index)
-frontend/
-app/
-page.tsx
-components/
-ChatBox.tsx
-Message.tsx
-TracePanel.tsx
-lib/
-api.ts # frontend -> backend call
+adaptive-multi-agent-rag/
+│
+├── backend/
+│   │
+│   ├── app/
+│   │   ├── main.py                  # FastAPI entrypoint
+│   │   ├── config.py                # Environment & settings
+│   │   │
+│   │   ├── api/                     # REST endpoints
+│   │   │   ├── chat.py
+│   │   │   └── health.py
+│   │   │
+│   │   ├── graph/                   # LangGraph workflows
+│   │   │   ├── state.py             # GraphState definition
+│   │   │   ├── builder.py           # Graph construction
+│   │   │   └── edges.py             # Routing & decision logic
+│   │   │
+│   │   ├── agents/                  # Multi-agent modules
+│   │   │   ├── router_agent.py
+│   │   │   ├── retrieval_agent.py
+│   │   │   ├── grading_agent.py
+│   │   │   ├── generation_agent.py
+│   │   │   ├── hallucination_agent.py
+│   │   │   └── rewrite_agent.py
+│   │   │
+│   │   ├── rag/                     # RAG components
+│   │   │   ├── embeddings.py
+│   │   │   ├── vectorstore.py
+│   │   │   ├── retriever.py
+│   │   │   └── prompt_templates.py
+│   │   │
+│   │   ├── tools/                   # External tools
+│   │   │   ├── web_search.py
+│   │   │   └── custom_tools.py
+│   │   │
+│   │   ├── memory/                  # Memory systems
+│   │   │   └── memory_saver.py
+│   │   │
+│   │   └── utils/
+│   │       ├── logger.py
+│   │       └── helpers.py
+│   │
+│   ├── scripts/
+│   │   ├── build_index.py           # Ingest + embed documents
+│   │   └── ingest_web.py
+│   │
+│   ├── chroma_db/                   # Persistent vector DB
+│   ├── data/                        # Raw datasets
+│   │
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── frontend/                        # (Optional if using React/Next)
+│   ├── app/
+│   │   ├── page.tsx
+│   │   └── layout.tsx
+│   │
+│   ├── components/
+│   │   ├── ChatBox.tsx
+│   │   ├── Message.tsx
+│   │   └── TracePanel.tsx
+│   │
+│   └── lib/
+│       └── api.ts
+│
+├── .env.example
+├── docker-compose.yml
+├── README.md
+└── .gitignore
+
 
 
 
