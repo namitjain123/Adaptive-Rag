@@ -61,25 +61,26 @@ If not:
 
 ---
 
-## Project Structure
+## 📁 Project Structure
+
+```bash
 adaptive-multi-agent-rag/
 │
 ├── backend/
-│   │
 │   ├── app/
 │   │   ├── main.py                  # FastAPI entrypoint
 │   │   ├── config.py                # Environment & settings
 │   │   │
-│   │   ├── api/                     # REST endpoints
+│   │   ├── api/
 │   │   │   ├── chat.py
 │   │   │   └── health.py
 │   │   │
-│   │   ├── graph/                   # LangGraph workflows
-│   │   │   ├── state.py             # GraphState definition
-│   │   │   ├── builder.py           # Graph construction
-│   │   │   └── edges.py             # Routing & decision logic
+│   │   ├── graph/
+│   │   │   ├── state.py
+│   │   │   ├── builder.py
+│   │   │   └── edges.py
 │   │   │
-│   │   ├── agents/                  # Multi-agent modules
+│   │   ├── agents/
 │   │   │   ├── router_agent.py
 │   │   │   ├── retrieval_agent.py
 │   │   │   ├── grading_agent.py
@@ -87,17 +88,17 @@ adaptive-multi-agent-rag/
 │   │   │   ├── hallucination_agent.py
 │   │   │   └── rewrite_agent.py
 │   │   │
-│   │   ├── rag/                     # RAG components
+│   │   ├── rag/
 │   │   │   ├── embeddings.py
 │   │   │   ├── vectorstore.py
 │   │   │   ├── retriever.py
 │   │   │   └── prompt_templates.py
 │   │   │
-│   │   ├── tools/                   # External tools
+│   │   ├── tools/
 │   │   │   ├── web_search.py
 │   │   │   └── custom_tools.py
 │   │   │
-│   │   ├── memory/                  # Memory systems
+│   │   ├── memory/
 │   │   │   └── memory_saver.py
 │   │   │
 │   │   └── utils/
@@ -105,16 +106,15 @@ adaptive-multi-agent-rag/
 │   │       └── helpers.py
 │   │
 │   ├── scripts/
-│   │   ├── build_index.py           # Ingest + embed documents
+│   │   ├── build_index.py
 │   │   └── ingest_web.py
 │   │
-│   ├── chroma_db/                   # Persistent vector DB
-│   ├── data/                        # Raw datasets
-│   │
+│   ├── chroma_db/
+│   ├── data/
 │   ├── requirements.txt
 │   └── Dockerfile
 │
-├── frontend/                        # (Optional if using React/Next)
+├── frontend/
 │   ├── app/
 │   │   ├── page.tsx
 │   │   └── layout.tsx
